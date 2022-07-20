@@ -1,45 +1,82 @@
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
   @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  final AppBar _appBar = AppBar(
+    title: const Center(
+      child: Text('ReservAI'),
+    ),
+  );
+
+  Widget responsiveLayout({
+    required Widget child,
+    required Drawer drawer,
+    required BuildContext context,
+  }) {
+    return LayoutBuilder(builder: (context, constraints) {
+      if (constraints.maxWidth < 700) {
+        return Scaffold(
+          appBar: _appBar,
+          drawer: drawer,
+          body: child,
+        );
+      } else {
+        return Scaffold(
+          appBar: _appBar,
+          body: Row(
+            children: [
+              drawer,
+              Expanded(
+                child: child,
+              ),
+            ],
+          ),
+        );
+      }
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('ReservAI'),
-      ),
-      endDrawer: Drawer(
-        child: ListView(
-          children: [
-            DrawerHeader(
-              decoration:
-                  BoxDecoration(color: Theme.of(context).colorScheme.tertiary),
-              child: const Text(
-                'ReservAI',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                ),
+    Drawer drawer = Drawer(
+      child: ListView(
+        children: [
+          DrawerHeader(
+            decoration: BoxDecoration(
+                color: Theme.of(context).appBarTheme.backgroundColor),
+            child: const Text(
+              'ReservAI',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
               ),
             ),
-            ListTile(
-              title: const Text('Reservar'),
-              onTap: () {},
-            ),
-            ListTile(
-              title: const Text('Histórico'),
-              onTap: () {},
-            ),
-            ListTile(
-              title: const Text('Sobre'),
-              onTap: () {},
-            ),
-          ],
-        ),
+          ),
+          ListTile(
+            title: const Text('Reservar'),
+            onTap: () {},
+          ),
+          ListTile(
+            title: const Text('Histórico'),
+            onTap: () {},
+          ),
+          ListTile(
+            title: const Text('Sobre'),
+            onTap: () {},
+          ),
+        ],
       ),
-      body: Column(
+    );
+
+    return responsiveLayout(
+      child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Padding(
@@ -64,6 +101,8 @@ class HomePage extends StatelessWidget {
           const Text('Home Page'),
         ],
       ),
+      drawer: drawer,
+      context: context,
     );
   }
 }
