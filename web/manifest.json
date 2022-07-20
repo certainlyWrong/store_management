@@ -1,6 +1,6 @@
 {
-    "name": "reservai",
-    "short_name": "reservai",
+    "name": "ReservAI",
+    "short_name": "ReservAI",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
