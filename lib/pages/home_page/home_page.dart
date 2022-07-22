@@ -80,12 +80,17 @@ class _HomePageState extends State<HomePage> {
     return responsiveLayout(
       child: ListView(
         children: [
-          CachedNetworkImage(
-              imageUrl:
-                  'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/132.png'),
-
+          // CachedNetworkImage(
+          //   imageUrl:
+          //       'https://hdqwalls.com/wallpapers/spiderman-miles-lost-in-space-4k-0f.jpg',
+          //   progressIndicatorBuilder: (context, url, progress) => Center(
+          //     child: CircularProgressIndicator(
+          //       value: progress.progress,
+          //     ),
+          //   ),
+          // ),
           // Image.network(
-          //     'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/132.png'),
+          //     'https://hdqwalls.com/wallpapers/spiderman-miles-lost-in-space-4k-0f.jpg'),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Card(
