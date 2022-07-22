@@ -1,7 +1,28 @@
 import 'package:flutter/material.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
+
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  late FocusNode _emailFocusNode, _passwordFocusNode;
+
+  @override
+  void initState() {
+    _emailFocusNode = FocusNode();
+    _passwordFocusNode = FocusNode();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _emailFocusNode.dispose();
+    _passwordFocusNode.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,15 +43,22 @@ class LoginPage extends StatelessWidget {
                 ),
                 const SizedBox(height: 16),
                 TextFormField(
+                  autocorrect: true,
+                  autofocus: true,
+                  focusNode: _emailFocusNode,
                   decoration: const InputDecoration(
                     labelText: 'Email',
+                    border: OutlineInputBorder(),
                   ),
                 ),
                 const SizedBox(height: 16),
                 TextFormField(
+                  autofocus: true,
                   obscureText: true,
+                  focusNode: _passwordFocusNode,
                   decoration: const InputDecoration(
                     labelText: 'Senha',
+                    border: OutlineInputBorder(),
                   ),
                 ),
                 const SizedBox(height: 16),
@@ -39,7 +67,7 @@ class LoginPage extends StatelessWidget {
                   child: FloatingActionButton(
                     onPressed: () {
                       Navigator.pushNamedAndRemoveUntil(
-                          context, '/splash', ((route) => false));
+                          context, '/user', ((route) => false));
                     },
                     child: const Text(
                       'ENTRAR',

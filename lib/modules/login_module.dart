@@ -9,13 +9,10 @@ class LoginModule extends StatelessWidget {
     return FutureBuilder(
       future: login.loadLibrary(),
       builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Center(child: CircularProgressIndicator());
-        } else if (snapshot.hasError) {
-          return const Center(child: Text('Error'));
-        } else {
+        if (snapshot.hasData) {
           return login.LoginPage();
         }
+        return const Center(child: CircularProgressIndicator());
       },
     );
   }

@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/foundation.dart';
 import 'package:reservai/global/themes.dart';
-import 'package:reservai/pages/splash/splash.dart';
 import 'package:reservai/modules/home_module.dart';
 import 'package:reservai/modules/login_module.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 import 'package:flutter_native_splash/flutter_native_splash_web.dart';
+import 'package:reservai/pages/home_page/home_page.dart';
+import 'package:reservai/pages/login_page/login_page.dart';
 
 void main() {
   // if (kDebugMode) {
@@ -36,9 +37,10 @@ class Reservai extends StatelessWidget {
       themeMode: ThemeMode.system,
       initialRoute: '/login',
       routes: {
-        '/': (context) => const HomeModule(),
-        '/login': (context) => const LoginModule(),
-        '/splash': (context) => const SplashPage(),
+        // '/user': (context) => const HomeModule(),
+        // '/login': (context) => const LoginModule(),
+        '/user': (context) => const HomePage(),
+        '/login': (context) => const LoginPage(),
       },
     );
   }

@@ -1,21 +1,13 @@
 import 'package:flutter/material.dart';
 
-class SplashPage extends StatefulWidget {
-  const SplashPage({super.key});
+class LoadPage extends StatefulWidget {
+  const LoadPage({super.key});
 
   @override
-  State<SplashPage> createState() => _SplashPageState();
+  State<LoadPage> createState() => _LoadPageState();
 }
 
-class _SplashPageState extends State<SplashPage> {
-  @override
-  void initState() {
-    Future.delayed(const Duration(seconds: 2), () {
-      Navigator.of(context).pushReplacementNamed('/');
-    });
-    super.initState();
-  }
-
+class _LoadPageState extends State<LoadPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

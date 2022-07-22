@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -45,6 +46,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     Drawer drawer = Drawer(
+      width: 250,
       child: ListView(
         children: [
           DrawerHeader(
@@ -76,9 +78,14 @@ class _HomePageState extends State<HomePage> {
     );
 
     return responsiveLayout(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+      child: ListView(
         children: [
+          CachedNetworkImage(
+              imageUrl:
+                  'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/132.png'),
+
+          // Image.network(
+          //     'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/132.png'),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Card(
@@ -91,14 +98,10 @@ class _HomePageState extends State<HomePage> {
           ),
           FloatingActionButton(
             onPressed: () {
-              Navigator.pushNamed(context, '/splash');
-              Future.delayed(const Duration(seconds: 2), () {
-                Navigator.pop(context);
-              });
+              Navigator.pushNamed(context, '/login');
             },
             child: const Icon(Icons.add),
           ),
-          const Text('Home Page'),
         ],
       ),
       drawer: drawer,
